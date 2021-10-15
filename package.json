@@ -1,0 +1,12 @@
+{
+  "name": "return-server",
+  "version": "1.0.0",
+  "description": "return-server",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^16.10.3",
+    "node-firebird-driver-native": "^2.3.0",
+    "typescript": "^4.4.3"
+  }
+}
