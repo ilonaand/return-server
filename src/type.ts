@@ -1,10 +1,12 @@
-export interface ISelectParam {
+export interface ISelectParams {
   datebegin: string;
   dateend: string;
   companyId: string;
   goodId: string;
 }
 
-export interface ISelectParams {
-  data: ISelectParam[];
-}
+export type IParams = (string | Date | number) [];
+
+export type IRecordObject = {
+  [name: string]: (string | Date | number) 
+};
