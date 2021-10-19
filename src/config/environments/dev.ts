@@ -2,7 +2,7 @@ export default {
   /**
    * URL of the API : http://API_URL:PORT/...
    */
-  API_URL: 'localhost',
+  API_URL: '192.168.0.70',
 
   /**
    * Logs localisation

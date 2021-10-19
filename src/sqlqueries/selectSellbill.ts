@@ -1,11 +1,9 @@
-import { ISelectParams } from "../type";
-
 export const selectQuery =
   `SELECT
     doc.ID,
     doc.NUMBER,
     doc.DOCUMENTDATE,
-    c.GOODKEY,
+    c.GOODKEY as goodId,
     bl.QUANTITY,
     c.USR$INV_COSTNCU AS price
   FROM gd_document doc
@@ -19,13 +17,13 @@ export const selectQuery =
     AND b.USR$BER_COMPANYKEY = ?
     AND c.GOODKEY = ?`;
 
-export const selectParams: ISelectParams = 
+/*export const selectParams: ISelectParams = 
   {  
     datebegin: '2021-05-06',
     dateend:'2021-05-27',
-    companyId: '897229164',
+    outletId: '897229164',
     goodId: '1779690976',
-  }
+  }*/
 
 
  
