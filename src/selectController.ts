@@ -20,6 +20,6 @@ export const getSellBills = async (req: Request, res: Response) => {
         res.status(500).json(e);
     }
   } else {
-    res.status(500).json('Неверные параметры');
+    res.status(500).json('Неверно заданы параметры');
   }
 }
