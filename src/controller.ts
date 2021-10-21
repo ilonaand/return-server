@@ -19,9 +19,9 @@ export const findAll = async (req: Request, res: Response) => {
           res.status(201).json(JSON.parse(JSON.stringify(sellBills))) :
           res.status(404).json('not found');
     } catch (e) {
-        res.status(500).json(e);
+        res.status(400).json(e);
     }
   } else {
-    res.status(500).json('Неверно заданы параметры');
+    res.status(400).json('Неверно заданы параметры');
   }
 }
