@@ -1,5 +1,5 @@
-import { attach } from "./connect"
-import { IParams, IRecordObject } from './type';
+import { attach } from "../connect"
+import { IParams, IRecordObject } from '../type';
 
 export const selectRecordSet = async <T extends IRecordObject>(query: string, arrParams: IParams): Promise<T[] | undefined> => {
   try {

@@ -1,8 +1,8 @@
-import { selectRecordSet } from "./service";
-import { selectQuery } from "./sqlqueries/selectSellbill";
-import { IRecordObject } from "./type";
+import { selectRecordSet } from "../service/sellService";
+import { selectQuery } from "../sqlqueries/selectSell";
+import { IRecordObject } from "../type";
 import { Request, Response } from "express";
-import { paramsValidator } from './validator';
+import { paramsValidator } from '../validators/sellValidator';
 
 export const findAll = async (req: Request, res: Response) => {
   if (paramsValidator(req.query)) {
