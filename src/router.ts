@@ -1,8 +1,8 @@
 import Router from 'express';
-import { getSellBills } from './selectController';
+import { findAll } from './controller';
 
 const router = Router();
 
-router.get('/v1/sellbills', getSellBills);
+router.get('/sellbills', findAll);
 
 export default router;

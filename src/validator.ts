@@ -1,6 +1,6 @@
 import { Request } from "express";
 
-export const makeDataValidator = (query: any): boolean => {
+export const paramsValidator = (query: any): boolean => {
   const check =
    typeof query ==='object'
     &&

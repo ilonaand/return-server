@@ -4,16 +4,7 @@ import router from "./router";
 
 const app = express();
 app.use(express.json()); 
-app.use('/', router)
-
-/*( async () => {
-  const recordSet = await selectRecordSet<IRecordObject>( selectQuery, arrParams(selectParams));
-  if (recordSet) {
-    for (const item  of recordSet ) {
-      console.log(item.DOCUMENTDATE, item.NUMBER);
-    } 
-  }
-} )(); */
+app.use('/v1', router)
 
 async function startApp() {
   try {
