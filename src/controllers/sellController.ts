@@ -1,10 +1,12 @@
 import { selectRecordSet } from "../service/sellService";
 import { selectQuery } from "../sqlqueries/selectSell";
 import { IRecordObject } from "../type";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { paramsValidator } from '../validators/sellValidator';
+import  ApiError from '../exceptions/ApiError';
+import { ok } from "../util";
 
-export const findAll = async (req: Request, res: Response) => {
+export const findAll = async (req: Request, res: Response, next: NextFunction) => {
   if (paramsValidator(req.query)) {
     try {
         const { dateBegin, dateEnd, outletId, goodId } = req.query as IRecordObject;
@@ -14,14 +16,16 @@ export const findAll = async (req: Request, res: Response) => {
           outletId,
           goodId
         ];
-        const sellBills = await selectRecordSet<IRecordObject>( selectQuery, selectParams);
-        return sellBills? 
-          res.status(201).json(JSON.parse(JSON.stringify(sellBills))) :
-          res.status(404).json('not found');
+        const sellBills: IRecordObject[] | undefined = await selectRecordSet<IRecordObject>( selectQuery, selectParams);
+        if ((sellBills ?? []).length == 0) { 
+          return next(ApiError.DataNotFound('Накладные за период не найдены')) 
+        };
+        return ok(res, JSON.parse(JSON.stringify(sellBills)));   
+        //res.status(200).json(JSON.parse(JSON.stringify(sellBills))) ;
     } catch (e) {
-        res.status(400).json(e);
+      next(e);
     }
   } else {
-    res.status(400).json('Неверно заданы параметры');
+    next(ApiError.BadRequest('Неверно заданы параметры'));
   }
 }

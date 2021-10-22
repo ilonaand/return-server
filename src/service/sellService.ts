@@ -1,4 +1,5 @@
 import { attach } from "../connect"
+import ApiError from "../exceptions/ApiError";
 import { IParams, IRecordObject } from '../type';
 
 export const selectRecordSet = async <T extends IRecordObject>(query: string, arrParams: IParams): Promise<T[] | undefined> => {
@@ -12,18 +13,18 @@ export const selectRecordSet = async <T extends IRecordObject>(query: string, ar
           const rows = await recordSet.fetchAsObject<T>();
           await recordSet.close();
           return rows;
-          } catch (err) {
-              console.error(err);
-              await tr.rollback();
-              inTransaction = false;
+          } catch (err: any) {
+            await tr.rollback();
+            inTransaction = false;
+            throw ApiError.BadRequest(err);
           } finally {
-              if (inTransaction) await tr.commit();
+            if (inTransaction) await tr.commit();
           }
       } finally {
         attachment.disconnect();
       }
-    } catch (err) {
-      console.error('База данных не доступна:', err);
+    } catch (err: any) {
+      throw ApiError.BadRequest(err.message);
     }
 };
 
