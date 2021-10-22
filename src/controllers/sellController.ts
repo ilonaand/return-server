@@ -21,7 +21,6 @@ export const findAll = async (req: Request, res: Response, next: NextFunction) =
           return next(ApiError.DataNotFound('Накладные за период не найдены')) 
         };
         return ok(res, JSON.parse(JSON.stringify(sellBills)));   
-        //res.status(200).json(JSON.parse(JSON.stringify(sellBills))) ;
     } catch (e) {
       next(e);
     }
