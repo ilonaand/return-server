@@ -15,4 +15,6 @@ const ok = <T>(res: Response, dto?: T) => {
   res.json(resp);
 };
 
-export { ok };
+const errorMessage = (status: number, name: string): string  => status + ': ' + name;
+
+export { ok, errorMessage };

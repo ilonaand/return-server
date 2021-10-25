@@ -18,13 +18,13 @@ export const findAll = async (req: Request, res: Response, next: NextFunction) =
         ];
         const sellBills: IRecordObject[] | undefined = await selectRecordSet<IRecordObject>( selectQuery, selectParams);
         if ((sellBills ?? []).length == 0) { 
-          return next(ApiError.DataNotFound('Накладные за период не найдены')) 
+          return next(ApiError.DataNotFound('Накладные за период не найдены', 'Накладные за период не найдены')) 
         };
         return ok(res, JSON.parse(JSON.stringify(sellBills)));   
     } catch (e) {
       next(e);
     }
   } else {
-    next(ApiError.BadRequest('Неверно заданы параметры'));
+    next(ApiError.BadRequest('Неверно заданы параметры', 'Неверно заданы параметры'));
   }
 }

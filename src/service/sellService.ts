@@ -16,7 +16,7 @@ export const selectRecordSet = async <T extends IRecordObject>(query: string, ar
           } catch (err: any) {
             await tr.rollback();
             inTransaction = false;
-            throw ApiError.BadRequest(err);
+            throw ApiError.BadRequest(err.message);
           } finally {
             if (inTransaction) await tr.commit();
           }
