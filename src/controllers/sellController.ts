@@ -17,9 +17,6 @@ export const findAll = async (req: Request, res: Response, next: NextFunction) =
           goodId
         ];
         const sellBills: IRecordObject[] | undefined = await selectRecordSet<IRecordObject>( selectQuery, selectParams);
-        if (sellBills?.length == 0) { 
-          return next(ApiError.DataNotFound('Накладные за период не найдены', 'Накладные за период не найдены')) 
-        };
         return ok(res, JSON.parse(JSON.stringify(sellBills)));   
     } catch (e) {
       next(e);
