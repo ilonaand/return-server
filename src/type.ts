@@ -1,7 +1,7 @@
-export type IParams = (string | Date | number) [];
+export type IParams = (string | Date | number)[];
 
 export type IRecordObject = {
-  [name: string]: string
+  [name: string]: string;
 };
 export interface IResponse<T = undefined> {
   result: boolean;

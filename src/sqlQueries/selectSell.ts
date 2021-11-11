@@ -1,5 +1,4 @@
-export const selectQuery =
-  `EXECUTE BLOCK (DATEBEGIN DATE = ?,
+export const selectQuery = `EXECUTE BLOCK (DATEBEGIN DATE = ?,
     DATEEND DATE = ?, CONTACT INTEGER = ?,
     GOODKEY INTEGER = ?)
   RETURNS(
@@ -45,13 +44,10 @@ WHERE doc.DOCUMENTDATE >= :datebegin
     END
   END`;
 
-/*export const selectParams: ISelectParams = 
-  {  
+/*export const selectParams: ISelectParams =
+  {
     datebegin: '2021-05-06',
     dateend:'2021-05-27',
     outletId: '897229164',
     goodId: '1779690976',
   }*/
-
-
- 

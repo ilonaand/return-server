@@ -1,5 +1,6 @@
-import { IResponse } from './type';
 import { Response } from 'express';
+
+import { IResponse } from './type';
 
 const ok = <T>(res: Response, dto?: T) => {
   const resp: IResponse<T> = {
@@ -15,6 +16,6 @@ const ok = <T>(res: Response, dto?: T) => {
   res.json(resp);
 };
 
-const errorMessage = (status: number, name: string): string  => status + ': ' + name;
+const errorMessage = (status: number, name: string): string => status + ': ' + name;
 
 export { ok, errorMessage };
